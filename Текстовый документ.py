@@ -17,11 +17,11 @@ also_object = open("C:\\Users\\Artem\\iGP and GPRO\\Евразия\\Qualifying.c
 Strategies = {}
 error = []
 Simple = {'Super soft tyres': 'SS',
-        'Soft tyres': 'S',
-        'Medium tyres': 'M',
-        'Hard tyres': 'H',
-        'Intermediate wet tyres': 'I',
-        'Full wet tyres': 'W'}
+          'Soft tyres': 'S',
+          'Medium tyres': 'M',
+          'Hard tyres': 'H',
+          'Intermediate wet tyres': 'I',
+          'Full wet tyres': 'W'}
 try:
     main = csv.reader(reader_object, delimiter=',')
     adv = csv.reader(also_object, delimiter=',')
@@ -53,11 +53,11 @@ nf = pygame.font.SysFont('verdana', 12)
 f = pygame.font.SysFont('arial', 12)
 fs = pygame.font.SysFont('trebuchet', 12)
 Colors = {'SS': (200, 0, 0), 
-        'S': (200, 180, 0), 
-        'M': (200, 200, 200),
-        'H': (200, 120, 0),
-        'I': (0, 200, 0),
-        'W': (55, 55, 255)}
+          'S': (200, 180, 0),
+          'M': (200, 200, 200),
+          'H': (200, 120, 0),
+          'I': (0, 200, 0),
+          'W': (55, 55, 255)}
 Stints = {'SS': [], 'S': [], 'M': [], 'H': [], 'I': [], 'W': []}
 sc = pygame.display.set_mode((1400, 800))
 sc.fill((0, 0, 0))
@@ -77,76 +77,73 @@ empty = 10
 pits_weight = 50
 
 a = fs.render('qualy', 1, (255, 255, 255))
-a_rect = a.get_rect(centerx = empty + q_extra / 2 + text_weight + text_height / 2, y = empty - 3)
+a_rect = a.get_rect(centerx=empty + q_extra / 2 + text_weight + text_height / 2, y=empty - 3)
 sc.blit(a, a_rect)
 
 for i in range(1, max_laps + 1):
     mtext = fs.render(str(i), 0, (255, 255, 255))
-    m_rect = mtext.get_rect(centerx = text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*i, y = empty)
+    m_rect = mtext.get_rect(centerx=text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*i,
+                            y=empty)
     sc.blit(mtext, m_rect)
 
 for i in order:
-        text = nf.render(i, 1, (255, 255, 255))
-        sc.blit(text, (empty, 
-                       2 * empty + text_height * c))
+    text = nf.render(i, 1, (255, 255, 255))
+    sc.blit(text, (empty, 2 * empty + text_height * c))
 
-        laps = 0
-        s = len(Strategies[i]) - 3
-        qualy = Strategies[i][1]
+    laps = 0
+    s = len(Strategies[i]) - 3
+    qualy = Strategies[i][1]
 
-        if qualy[0] == 1:
-            qtext = f.render(str(qualy[0]), 1, (0, 0, 0))
-            pygame.draw.rect(sc, 
-                            (120, 0, 240),
-                            (empty + text_weight, 2 * empty + text_height * c, text_height, text_height))
-        else:
-            qtext = f.render(str(qualy[0]), 1, (255, 255, 255))
-        pygame.draw.line(sc, 
-                            Colors[qualy[1]],
-                            (empty + text_weight + text_height + q_extra / 2, 2 * empty + text_height * c), 
-                            (empty + text_weight + text_height + q_extra / 2, 2 * empty + text_height * c + text_height),
-                            5)
-        q_rect = qtext.get_rect(center=(empty + text_weight + text_height / 2, 
+    if qualy[0] == 1:
+        qtext = f.render(str(qualy[0]), 1, (0, 0, 0))
+        pygame.draw.rect(sc,
+                         (120, 0, 240),
+                         (empty + text_weight, 2 * empty + text_height * c, text_height, text_height))
+    else:
+        qtext = f.render(str(qualy[0]), 1, (255, 255, 255))
+    pygame.draw.line(sc, Colors[qualy[1]],
+                     (empty + text_weight + text_height + q_extra / 2, 2 * empty + text_height * c),
+                     (empty + text_weight + text_height + q_extra / 2, 2 * empty + text_height * c + text_height), 5)
+    q_rect = qtext.get_rect(center=(empty + text_weight + text_height / 2,
                                     2 * empty + text_height * c + text_height/2 - 1))
-        sc.blit(qtext, q_rect)
+    sc.blit(qtext, q_rect)
 
-        ptext = nf.render(str(s) + ' pits', 1, (255, 255, 255))
-        sc.blit(ptext, (2 * empty + q_extra + text_weight + text_height, 
-                        2 * empty + text_height * c))
+    ptext = nf.render(str(s) + ' pits', 1, (255, 255, 255))
+    sc.blit(ptext, (2 * empty + q_extra + text_weight + text_height, 2 * empty + text_height * c))
 
-        for j in Strategies[i][2:]:
-            Stints[j[0]].append(j[1])
+    for j in Strategies[i][2:]:
+        Stints[j[0]].append(j[1])
 
-            pygame.draw.rect(sc, 
-                             Colors[j[0]], 
-                             (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps,
-                             2 * empty + text_height*c + (text_height - lap_height)/2,
-                             lap_weight*j[1],
-                             lap_height))
-            laps += j[1]
-        for q in range(1, laps + 1):
-            pygame.draw.line(sc,
-                            (50, 50, 50), 
-                            (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*q, 2 * empty + text_height*c + (text_height - lap_height)/2), 
-                            (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*q, 2 * empty + text_height*c + (text_height + lap_height)/2 - 1))
-        laps = 0
+        pygame.draw.rect(sc, Colors[j[0]],
+                         (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps,
+                         2 * empty + text_height*c + (text_height - lap_height)/2,
+                         lap_weight*j[1],
+                         lap_height))
+        laps += j[1]
+    for q in range(1, laps + 1):
+        pygame.draw.line(sc,
+                         (50, 50, 50),
+                         (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*q,
+                          2 * empty + text_height*c + (text_height - lap_height)/2),
+                         (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*q,
+                          2 * empty + text_height*c + (text_height + lap_height)/2 - 1))
+    laps = 0
 
-        for k in Strategies[i][2:]:
-            pygame.draw.circle(sc, 
-                               Colors[k[0]], 
-                               (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps, 
-                               2 * empty + text_height * c + text_height / 2), 
-                               text_height / 2 - 1)
-            ltext = f.render(str(k[1]), 1, (0, 0, 0))
-            l_rect = ltext.get_rect(center=(text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps, 
-                                            2 * empty + text_height * c + text_height / 2 - 0.5))
-            sc.blit(ltext, l_rect)
-            laps += k[1]
+    for k in Strategies[i][2:]:
+        pygame.draw.circle(sc, Colors[k[0]],
+                           (text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps,
+                           2 * empty + text_height * c + text_height / 2),
+                           text_height / 2 - 1)
+        ltext = f.render(str(k[1]), 1, (0, 0, 0))
+        l_rect = ltext.get_rect(center=(text_height + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps,
+                                2 * empty + text_height * c + text_height / 2 - 0.5))
+        sc.blit(ltext, l_rect)
+        laps += k[1]
 
-        ftext = f.render(str(Strategies[i][0]), 1, (255, 255, 255))
-        sc.blit(ftext, (text_height + text_height / 4 + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps, 
-                        2 * empty + text_height * c + text_height / 8))
-        c += 1
+    ftext = f.render(str(Strategies[i][0]), 1, (255, 255, 255))
+    sc.blit(ftext, (text_height + text_height / 4 + 2 * empty + q_extra + pits_weight + text_weight + lap_weight*laps,
+            2 * empty + text_height * c + text_height / 8))
+    c += 1
 
 n = 0
 for i in Stints.keys():
@@ -159,7 +156,9 @@ for i in Stints.keys():
         averl *= 100
         averl = int(averl)
         averl /= 100
-        pygame.draw.circle(sc, Colors[i], (empty + text_height / 2, (len(order) + n) * text_height + 2 * empty + text_height / 2), text_height / 2)
+        pygame.draw.circle(sc, Colors[i],
+                           (empty + text_height / 2, (len(order) + n) * text_height + 2 * empty + text_height / 2),
+                           text_height / 2)
         maxtext = nf.render('Max: ' + str(maxl) + ' laps', 0, (255, 255, 255))
         avertext = nf.render('Average: ' + str(averl) + ' laps', 0, (255, 255, 255))
         sc.blit(maxtext, (2 * empty + text_height, (len(order) + n) * text_height + 2 * empty))
