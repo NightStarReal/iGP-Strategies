@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86f4c7a0-702c-45e5-975e-a9fd52f802ed" name="Changes" comment="">
+    <list default="true" id="86f4c7a0-702c-45e5-975e-a9fd52f802ed" name="Changes" comment="PEP-8">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Текстовый документ.py" beforeDir="false" afterPath="$PROJECT_DIR$/Текстовый документ.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +39,21 @@
       <option name="presentableId" value="Default" />
       <updated>1694193030715</updated>
     </task>
+    <task id="LOCAL-00001" summary="PEP-8">
+      <created>1694201698903</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694201698903</updated>
+    </task>
+    <task id="LOCAL-00002" summary="PEP-8">
+      <created>1694201752989</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694201752989</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -50,5 +66,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="PEP-8" />
+    <option name="LAST_COMMIT_MESSAGE" value="PEP-8" />
   </component>
 </project>

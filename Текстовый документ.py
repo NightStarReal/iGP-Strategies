@@ -12,8 +12,8 @@ try:
 finally:
     file.close()
 
-reader_object = open("C:\\Users\\Artem\\iGP and GPRO\\Евразия\\pit_history.csv", encoding='UTF-8')
-also_object = open("C:\\Users\\Artem\\iGP and GPRO\\Евразия\\Qualifying.csv", encoding='UTF-8')
+reader_object = open("pit_history.csv", encoding='UTF-8')
+also_object = open("Qualifying.csv", encoding='UTF-8')
 Strategies = {}
 error = []
 Simple = {'Super soft tyres': 'SS',
@@ -38,8 +38,8 @@ try:
                     q.append((Simple[row[i]], int(row[i+1])))
                 else:
                     q.append((Simple[row[i]], 0))
-        Strategies[Pilots[row[1]]] += q
-        Strategies[Pilots[row[1]]].insert(0, int(row[0]))
+        Strategies[row[1]] += q
+        Strategies[row[1]].insert(0, int(row[0]))
 finally:
     reader_object.close()
     also_object.close()
