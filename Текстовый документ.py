@@ -27,10 +27,7 @@ try:
     adv = csv.reader(also_object, delimiter=',')
     for row in adv:
         if row[1] != 'Driver':
-            try:
-                Strategies[Pilots[row[1]]] = [(int(row[0]), row[5])]
-            except KeyError:
-                error.append(row[1])
+            Strategies[row[1]] = [(int(row[0]), row[5])]
     if len(error) >= 1:
         raise KeyError(f'Чьи это пилоты? {error}')
     for row in main:
