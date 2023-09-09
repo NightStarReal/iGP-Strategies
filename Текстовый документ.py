@@ -1,17 +1,6 @@
 import csv
 import pygame
 
-file = open("C:\\Users\\Artem\\iGP and GPRO\\Евразия\\Пилоты.txt", encoding='UTF-8')
-Pilots = {}
-try:
-    q = file.readlines()
-    for i in range(len(q)):
-        q[i] = q[i].rstrip()
-        q[i] = tuple(q[i].split(','))
-        Pilots[q[i][0]] = q[i][1]
-finally:
-    file.close()
-
 reader_object = open("pit_history.csv", encoding='UTF-8')
 also_object = open("Qualifying.csv", encoding='UTF-8')
 Strategies = {}
