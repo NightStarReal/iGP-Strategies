@@ -1,5 +1,5 @@
 # iGP-Strategies
-Create a showcase of iGP Race. You need to install iGPPlus extension.
+Create a showcase of iGP Race strategies. You need to install iGPPlus extension.
 How it works:
 1. Extract the race results.
 2. Click the "Export Q" button. You download the "XXXXXXX_Qualifying.csv" file. Delete "XXXXXX_" from the file name. (it should be "Qualifying.csv")
