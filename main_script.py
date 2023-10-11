@@ -1,10 +1,10 @@
+error = open("error.txt", 'w+', encoding='UTF-8')
 try:
     import csv
-    import pygam
-    from tkinter import messagebox as mb
+    import pygame
 except ModuleNotFoundError:
-    print("You didn't installed all modules required (pygame, csv)")
-    mb.showerror("ModuleNotFoundError", "You didn't installed all modules required (pygame, csv)")
+    error.write("You didn't installed all modules required (pygame, csv)")
+    error.close()
     raise ModuleNotFoundError
 
 reader_object = open("pit_history.csv", encoding='UTF-8')
@@ -24,8 +24,8 @@ try:
             try:
                 Strategies[row[1]] = [(int(row[0]), row[5])]
             except ValueError:
-                print(f"invalid literal for int() with base 10: {row[0]}")
-                mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[0]}")
+                error.write(f"invalid literal for int() with base 10: {row[0]}")
+                error.close()
                 raise ValueError
     for row in main:
         q = []
@@ -35,20 +35,20 @@ try:
                     try:
                         q.append((Simple[row[i]], int(row[i+1])))
                     except ValueError:
-                        print(f"invalid literal for int() with base 10: {row[i+1]}")
-                        mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[i+1]}")
+                        error.write(f"invalid literal for int() with base 10: {row[i+1]}")
+                        error.close()
                         raise ValueError
                     except KeyError:
-                        print(f"That is not compound {row[i]}")
-                        mb.showerror("KeyError", f"That is not compound {row[i]}")
-                        raise ValueError
+                        error.write(f"That is not compound {row[i]}")
+                        error.close()
+                        raise KeyError
                 else:
                     try:
                         q.append((Simple[row[i]], 0))
                     except KeyError:
-                        print(f"That is not compound {row[i]}")
-                        mb.showerror("KeyError", f"That is not compound {row[i]}")
-                        raise ValueError
+                        error.write(f"That is not compound {row[i]}")
+                        error.close()
+                        raise KeyError
         Strategies[row[1]] += q
         Strategies[row[1]].insert(0, int(row[0]))
 finally:
