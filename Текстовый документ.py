@@ -4,7 +4,6 @@ import pygame
 reader_object = open("pit_history.csv", encoding='UTF-8')
 also_object = open("Qualifying.csv", encoding='UTF-8')
 Strategies = {}
-error = []
 Simple = {'Super soft tyres': 'SS',
           'Soft tyres': 'S',
           'Medium tyres': 'M',
@@ -17,8 +16,6 @@ try:
     for row in adv:
         if row[1] != 'Driver':
             Strategies[row[1]] = [(int(row[0]), row[5])]
-    if len(error) >= 1:
-        raise KeyError(f'Чьи это пилоты? {error}')
     for row in main:
         q = []
         for i in range(2, len(row), 2):
