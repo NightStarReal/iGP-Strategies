@@ -1,0 +1,32 @@
+Index: Текстовый документ.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Текстовый документ.py b/Текстовый документ.py
+--- a/Текстовый документ.py	
++++ b/Текстовый документ.py	
+@@ -1,6 +1,8 @@
+ import csv
+ import pygame
++from tkinter import messagebox as mb
+ 
++int("X")
+ reader_object = open("pit_history.csv", encoding='UTF-8')
+ also_object = open("Qualifying.csv", encoding='UTF-8')
+ Strategies = {}
+@@ -16,9 +18,11 @@
+     adv = csv.reader(also_object, delimiter=',')
+     for row in adv:
+         if row[1] != 'Driver':
+-            Strategies[row[1]] = [(int(row[0]), row[5])]
+-    if len(error) >= 1:
+-        raise KeyError(f'Чьи это пилоты? {error}')
++            try:
++                Strategies[row[1]] = [(int(row[0]), row[5])]
++            except ValueError:
++                mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[0]}")
++                raise ValueError
+     for row in main:
+         q = []
+         for i in range(2, len(row), 2):

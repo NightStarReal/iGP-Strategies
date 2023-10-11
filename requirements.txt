@@ -1,3 +1,5 @@
 There is the requirements of the Python modules for this file:
 1. pygame
 2. csv
+
+pygame~=2.4.0

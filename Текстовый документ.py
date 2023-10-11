@@ -1,5 +1,6 @@
 import csv
 import pygame
+from tkinter import messagebox as mb
 
 reader_object = open("pit_history.csv", encoding='UTF-8')
 also_object = open("Qualifying.csv", encoding='UTF-8')
@@ -15,15 +16,30 @@ try:
     adv = csv.reader(also_object, delimiter=',')
     for row in adv:
         if row[1] != 'Driver':
-            Strategies[row[1]] = [(int(row[0]), row[5])]
+            try:
+                Strategies[row[1]] = [(int(row[0]), row[5])]
+            except ValueError:
+                mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[0]}")
+                raise ValueError
     for row in main:
         q = []
         for i in range(2, len(row), 2):
             if i + 1 < len(row):
                 if row[i + 1] != 'NaN':
-                    q.append((Simple[row[i]], int(row[i+1])))
+                    try:
+                        q.append((Simple[row[i]], int(row[i+1])))
+                    except ValueError:
+                        mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[i+1]}")
+                        raise ValueError
+                    except KeyError:
+                        mb.showerror("KeyError", f"That is not compound {row[i]}")
+                        raise ValueError
                 else:
-                    q.append((Simple[row[i]], 0))
+                    try:
+                        q.append((Simple[row[i]], 0))
+                    except KeyError:
+                        mb.showerror("KeyError", f"That is not compound {row[i]}")
+                        raise ValueError
         Strategies[row[1]] += q
         Strategies[row[1]].insert(0, int(row[0]))
 finally:
