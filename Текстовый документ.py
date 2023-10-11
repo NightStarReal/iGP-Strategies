@@ -1,6 +1,9 @@
-import csv
-import pygame
-from tkinter import messagebox as mb
+try:
+    import csv
+    import pygame
+    from tkinter import messagebox as mb
+except ModuleNotFoundError:
+    mb.showerror("ModuleNotFoundError", "You didn't installed all modules required (pygame, csv)")
 
 reader_object = open("pit_history.csv", encoding='UTF-8')
 also_object = open("Qualifying.csv", encoding='UTF-8')
