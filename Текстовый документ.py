@@ -46,11 +46,15 @@ finally:
     reader_object.close()
     also_object.close()
 
-pygame.init()
-pygame.font.init()
-nf = pygame.font.SysFont('verdana', 12)
-f = pygame.font.SysFont('arial', 12)
-fs = pygame.font.SysFont('trebuchet', 12)
+try:
+    pygame.init()
+    pygame.font.init()
+    nf = pygame.font.SysFont('verdana', 12)
+    f = pygame.font.SysFont('arial', 12)
+    fs = pygame.font.SysFont('trebuchet', 12)
+except NameError:
+    mb.showerror("NameError", "Pygame isn't installed")
+    raise NameError
 Colors = {'SS': (200, 0, 0), 
           'S': (200, 180, 0),
           'M': (200, 200, 200),
