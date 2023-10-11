@@ -1,9 +1,11 @@
 try:
     import csv
-    import pygame
+    import pygam
     from tkinter import messagebox as mb
 except ModuleNotFoundError:
+    print("You didn't installed all modules required (pygame, csv)")
     mb.showerror("ModuleNotFoundError", "You didn't installed all modules required (pygame, csv)")
+    raise ModuleNotFoundError
 
 reader_object = open("pit_history.csv", encoding='UTF-8')
 also_object = open("Qualifying.csv", encoding='UTF-8')
@@ -22,6 +24,7 @@ try:
             try:
                 Strategies[row[1]] = [(int(row[0]), row[5])]
             except ValueError:
+                print(f"invalid literal for int() with base 10: {row[0]}")
                 mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[0]}")
                 raise ValueError
     for row in main:
@@ -32,15 +35,18 @@ try:
                     try:
                         q.append((Simple[row[i]], int(row[i+1])))
                     except ValueError:
+                        print(f"invalid literal for int() with base 10: {row[i+1]}")
                         mb.showerror("ValueError", f"invalid literal for int() with base 10: {row[i+1]}")
                         raise ValueError
                     except KeyError:
+                        print(f"That is not compound {row[i]}")
                         mb.showerror("KeyError", f"That is not compound {row[i]}")
                         raise ValueError
                 else:
                     try:
                         q.append((Simple[row[i]], 0))
                     except KeyError:
+                        print(f"That is not compound {row[i]}")
                         mb.showerror("KeyError", f"That is not compound {row[i]}")
                         raise ValueError
         Strategies[row[1]] += q
@@ -49,15 +55,11 @@ finally:
     reader_object.close()
     also_object.close()
 
-try:
-    pygame.init()
-    pygame.font.init()
-    nf = pygame.font.SysFont('verdana', 12)
-    f = pygame.font.SysFont('arial', 12)
-    fs = pygame.font.SysFont('trebuchet', 12)
-except NameError:
-    mb.showerror("NameError", "Pygame isn't installed")
-    raise NameError
+pygame.init()
+pygame.font.init()
+nf = pygame.font.SysFont('verdana', 12)
+f = pygame.font.SysFont('arial', 12)
+fs = pygame.font.SysFont('trebuchet', 12)
 Colors = {'SS': (200, 0, 0), 
           'S': (200, 180, 0),
           'M': (200, 200, 200),
