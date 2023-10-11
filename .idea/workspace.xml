@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86f4c7a0-702c-45e5-975e-a9fd52f802ed" name="Changes" comment="Finale">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Текстовый документ.py" beforeDir="false" afterPath="$PROJECT_DIR$/Текстовый документ.py" afterDir="false" />
-    </list>
+    <list default="true" id="86f4c7a0-702c-45e5-975e-a9fd52f802ed" name="Changes" comment="Error Report" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697038344923</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Error Report">
+      <created>1697038833678</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697038833678</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +106,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PEP-8" />
     <MESSAGE value="Finale" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finale" />
+    <MESSAGE value="Error Report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error Report" />
   </component>
 </project>
